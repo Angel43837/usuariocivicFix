@@ -1,0 +1,27 @@
+# Build output
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Local settings and secrets
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+secrets.json
+
+# Local databases, logs, and uploaded files
+*.db
+*.sqlite
+*.sqlite3
+*.log
+wwwroot/uploads/*
+!wwwroot/uploads/.gitkeep
+wwwroot/lib/
