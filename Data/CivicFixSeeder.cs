@@ -12,7 +12,7 @@ public static class CivicFixSeeder
             return;
         }
 
-        var today = DateTime.Today;
+        var today = DateTime.UtcNow.Date;
         database.Reports.AddRange(
             new CivicReport { Folio = "CF-2026-00441", Category = "Vialidad", Location = "Av. Insurgentes Sur 1234, Del Valle", Priority = "Alta", Status = "Pendiente", Description = "Bache profundo junto al cruce peatonal.", CitizenName = "María Torres", CreatedAt = today.AddDays(-4) },
             new CivicReport { Folio = "CF-2026-00439", Category = "Alumbrado", Location = "Calle Reforma 89, Col. Juárez", Priority = "Media", Status = "En Proceso", Description = "Luminaria apagada desde hace tres noches.", CitizenName = "Luis Mendoza", Crew = "Cuadrilla A-7", CreatedAt = today.AddDays(-4).AddHours(-2) },

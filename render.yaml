@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: civicfix-ciudadano
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: Site__Mode
+        value: Citizen
+      - key: Database__Provider
+        value: Postgres
+      - key: ConnectionStrings__CivicFix
+        sync: false
+
+  - type: web
+    name: civicfix-admin
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: Site__Mode
+        value: Admin
+      - key: Database__Provider
+        value: Postgres
+      - key: ConnectionStrings__CivicFix
+        sync: false

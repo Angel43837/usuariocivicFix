@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Nuevo reporte";
+    Layout = "_CitizenLayout";
 }
 
 <section class="page-heading page-heading--form">
@@ -10,7 +11,6 @@
         <h1>Reportar un problema</h1>
         <p class="heading-date">Describe el servicio urbano que necesita atención.</p>
     </div>
-    <a class="button button--quiet" asp-controller="Home" asp-action="Index">Volver al panel</a>
 </section>
 
 <section class="form-panel">
@@ -80,7 +80,6 @@
             </div>
         </div>
         <div class="form-actions">
-            <a class="button button--quiet" asp-controller="Home" asp-action="Index">Cancelar</a>
             <button class="button button--primary" type="submit">Enviar reporte <span aria-hidden="true">→</span></button>
         </div>
     </form>

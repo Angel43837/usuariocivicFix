@@ -27,8 +27,12 @@
                     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
                     <span>Reportes</span><span class="nav-count">@((ViewData["ReportCount"] as int?) ?? 12)</span>
                 </a>
-                <span class="side-link side-link--muted" aria-disabled="true">
+                <a class="side-link" asp-controller="Users" asp-action="Index">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5.5a3 3 0 0 1 0 5.8M18 14a5 5 0 0 1 3 4.6V20"/></svg>
+                    <span>Usuarios</span>
+                </a>
+                <span class="side-link side-link--muted" aria-disabled="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17h16M7 17v-5m5 5V7m5 10v-8"/></svg>
                     <span>Cuadrillas</span><span class="nav-count nav-count--green">6</span>
                 </span>
                 <span class="side-link side-link--muted" aria-disabled="true">
@@ -48,8 +52,8 @@
             </nav>
 
             <div class="sidebar-user">
-                <span class="avatar">AG</span>
-                <span class="user-copy"><strong>Arq. García</strong><small>Administrador</small></span>
+                <span class="avatar">OP</span>
+                <span class="user-copy"><strong>Obras Públicas</strong><small>Panel administrativo</small></span>
                 <span class="online-dot" title="En línea"></span>
             </div>
         </aside>

@@ -1,12 +1,15 @@
 using System.Security.Cryptography;
 using CivicFix.Data;
 using CivicFix.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CivicFix.Controllers;
 
-public sealed class ReportsController(CivicFixContext database, IWebHostEnvironment environment) : Controller
+[Authorize]
+public sealed class ReportsController(CivicFixContext database, IWebHostEnvironment environment, UserManager<ApplicationUser> userManager) : Controller
 {
     private static readonly string[] Categories = ["Alumbrado", "Agua", "Limpieza", "Parques", "Vialidad", "Otro"];
     private static readonly IReadOnlyDictionary<string, string> ImageTypes = new Dictionary<string, string>
@@ -20,7 +23,12 @@ public sealed class ReportsController(CivicFixContext database, IWebHostEnvironm
     public async Task<IActionResult> Create()
     {
         await PopulateOptionsAsync();
-        return View(new CreateReportViewModel());
+        var model = new CreateReportViewModel
+        {
+            CitizenName = User.FindFirst("DisplayName")?.Value ?? string.Empty
+        };
+
+        return View(model);
     }
 
     [HttpPost]
@@ -76,12 +84,27 @@ public sealed class ReportsController(CivicFixContext database, IWebHostEnvironm
             Longitude = model.Longitude,
             PhotoPath = photoPath,
             Status = "Pendiente",
-            CreatedAt = DateTime.UtcNow
+            CreatedAt = DateTime.UtcNow,
+            UserId = userManager.GetUserId(User)
         };
 
         database.Reports.Add(report);
         await database.SaveChangesAsync();
         return RedirectToAction(nameof(Confirmation), new { folio = report.Folio });
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Mine()
+    {
+        var userId = userManager.GetUserId(User);
+        var reports = await database.Reports
+            .AsNoTracking()
+            .Where(report => report.UserId == userId)
+            .OrderByDescending(report => report.CreatedAt)
+            .ToListAsync();
+
+        ViewData["ReportCount"] = await database.Reports.CountAsync();
+        return View(reports);
     }
 
     [HttpGet]

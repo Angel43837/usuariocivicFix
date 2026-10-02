@@ -307,6 +307,33 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .confirmation-panel { margin: 5vh auto; padding: 34px 18px; }
 }
 
+.citizen-body { background: var(--canvas); }
+.citizen-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.citizen-topbar { padding: 7px clamp(18px, 4vw, 44px); color: #cfe0f7; background: #0a1a33; font-size: 11px; letter-spacing: .3px; }
+.citizen-header { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; padding: 14px clamp(18px, 4vw, 44px); color: #e7edf7; background: #0f2748; }
+.citizen-brand { display: flex; align-items: center; gap: 11px; color: #fff; }
+.citizen-brand .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; color: #6fa0ff; }
+.citizen-brand .brand-mark svg { width: 32px; height: 32px; }
+.citizen-brand-copy { display: flex; flex-direction: column; }
+.citizen-brand-copy strong { font-family: "Space Grotesk", "Segoe UI", sans-serif; font-size: 17px; }
+.citizen-brand-copy small { margin-top: 2px; color: #7fb0ff; font-size: 9px; font-weight: 700; letter-spacing: 1.4px; }
+.citizen-nav { display: flex; align-items: center; gap: 18px; margin-right: auto; }
+.citizen-nav a { padding: 6px 2px; color: #c4d4ea; font-size: 13px; font-weight: 600; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
+.citizen-nav a:hover { color: #fff; border-color: #4e86f2; }
+.citizen-auth { display: flex; align-items: center; gap: 10px; }
+.citizen-auth .button--quiet { border-color: rgba(255,255,255,.25); color: #e7edf7; background: transparent; }
+.citizen-auth .button--quiet:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+.citizen-user { color: #cfe0f7; font-size: 12px; font-weight: 600; }
+.citizen-main { width: 100%; max-width: 1000px; flex: 1; margin: 0 auto; padding: 30px clamp(18px, 4vw, 44px) 26px; }
+.citizen-footer { display: flex; justify-content: space-between; gap: 16px; padding: 16px clamp(18px, 4vw, 44px) 20px; color: #8a97a8; background: #eef1f5; border-top: 1px solid var(--line); font-size: 11px; }
+
+@media (max-width: 760px) {
+  .citizen-header { gap: 12px; padding: 12px 16px; }
+  .citizen-nav { order: 3; width: 100%; gap: 14px; margin-right: 0; }
+  .citizen-auth { margin-left: auto; }
+  .citizen-footer { flex-direction: column; gap: 4px; text-align: center; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

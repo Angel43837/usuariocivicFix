@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Reporte recibido";
+    Layout = "_CitizenLayout";
 }
 
 <section class="confirmation-panel">
@@ -12,5 +13,5 @@
     <h1>Reporte recibido</h1>
     <p>Tu folio quedó registrado y está pendiente de revisión.</p>
     <div class="confirmation-folio"><span>Folio de seguimiento</span><strong>@Model</strong></div>
-    <a class="button button--primary" asp-controller="Home" asp-action="Index">Ir al panel</a>
+    <a class="button button--primary" asp-controller="Reports" asp-action="Mine">Ver mis reportes</a>
 </section>
