@@ -1,29 +1,36 @@
-# CivicFix
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Panel web de gestión de reportes ciudadanos, construido con ASP.NET Core MVC, C#, Razor, JavaScript y Entity Framework Core. La pantalla de administración toma como referencia la captura compartida; no había un archivo `.pptx` disponible en el workspace.
+## Getting Started
 
-## Ejecutar
+First, run the development server:
 
-Requiere el SDK .NET 10.
-
-```powershell
-dotnet restore
-dotnet run
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-En desarrollo se usa EF Core InMemory con 12 reportes de muestra. Los cambios sobreviven entre solicitudes, pero se reinician al apagar la aplicación. Abre la URL local que muestra `dotnet run` y usa **Nuevo reporte** para probar el formulario ciudadano.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Usar SQL Server
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-El proveedor `Microsoft.EntityFrameworkCore.SqlServer` y la cadena de conexión están configurados en `appsettings.json`. Para usar SQL Server, cambia `Database:Provider` a `SqlServer` en `appsettings.Development.json` y configura `ConnectionStrings:CivicFix` con tu instancia. La cadena incluida apunta a SQL Server LocalDB (`(localdb)\MSSQLLocalDB`), que debe estar instalado.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-El esquema inicial se crea con `EnsureCreated`. Antes de desplegar, configura autenticación y roles, mueve secretos fuera de los archivos de configuración y reemplaza `EnsureCreated` por migraciones de EF Core.
+## Learn More
 
-## Funciones incluidas
+To learn more about Next.js, take a look at the following resources:
 
-- Panel con métricas, filtros por estado y categoría, búsqueda y exportación CSV.
-- Asignación de reportes pendientes y resolución de reportes en proceso.
-- Formulario ciudadano con categoría, prioridad, selección de punto en mapa OpenStreetMap, geolocalización y foto JPG, PNG o WEBP de hasta 5 MB.
-- Diseño responsive basado en el prototipo visual adjunto.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-El mapa usa Leaflet y mosaicos de OpenStreetMap; requiere conexión a internet. Si el mapa no está disponible, el formulario conserva la captura manual de dirección.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
